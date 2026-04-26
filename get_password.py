@@ -1,5 +1,5 @@
 
-import random
+import secrets
 import pyperclip
 
 # get password  function
@@ -20,17 +20,15 @@ def get_password(length=int):
         character_list.append(char)
     
     password = ""
-    password += random.choice(LOWER_CASE)
-    password += random.choice(UPPER_CASE)
-    password += random.choice(NUMS)
-    password += random.choice(SYMBOLS)
+    password += secrets.choice(LOWER_CASE)
+    password += secrets.choice(UPPER_CASE)
+    password += secrets.choice(NUMS)
+    password += secrets.choice(SYMBOLS)
 
     for i in range(1, length - 3):
-        password += random.choice(character_list)
-    shuffle_password = list(password)
-    random.shuffle(shuffle_password)
-    password = ""
-    for random_char in shuffle_password:
-        password += random_char
-    pyperclip.copy(password)
+        password += secrets.choice(character_list)
+    random_password = ""
+    for i in password:
+        random_password += secrets.choice(password)
+    pyperclip.copy(random_password)
 
