@@ -1,6 +1,7 @@
 # Password-Generator
 
-## A CLI tool to create strong passwords. 
+## Overview
+A command line password generator with clipboard support. 
 
 This simple tool randomly generates a unique strong password.
 Once executed, the program generates a strong password between 12 and 128 characters long and copies the output to the user's clipboard - ready to be used.
