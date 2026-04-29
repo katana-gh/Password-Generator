@@ -1,23 +1,22 @@
 
-import secrets
+import secrets, random
 import pyperclip
 
 # get password  function
 
-def get_password(length=int):
+def get_password(length: int):
+
     length = int(length)
     if length < 12:
         length = 12
     elif length > 128:
         length = 128
+    
     LOWER_CASE = "abcdefghijklmnopqrstuvwxyz"
     UPPER_CASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     NUMS = "1234567890"
     SYMBOLS = "!@#$%^&*()_+-=[]{}|;:,./<>? "
-    all_characters = LOWER_CASE + UPPER_CASE + NUMS + SYMBOLS
-    character_list = []
-    for char in all_characters:
-        character_list.append(char)
+    character_list = LOWER_CASE + UPPER_CASE + NUMS + SYMBOLS
     
     password = ""
     password += secrets.choice(LOWER_CASE)
@@ -25,10 +24,17 @@ def get_password(length=int):
     password += secrets.choice(NUMS)
     password += secrets.choice(SYMBOLS)
 
-    for i in range(1, length - 3):
+    for i in range(length - 4):
         password += secrets.choice(character_list)
-    random_password = ""
-    for i in password:
-        random_password += secrets.choice(password)
-    pyperclip.copy(random_password)
+
+    password = list(password)
+    r = random.SystemRandom()
+    r.shuffle(list(password)), r.shuffle([5, 4]), r.shuffle(password)
+    
+    shuffled_password = ""
+
+    for char in password:
+        shuffled_password += char
+    
+    pyperclip.copy(shuffled_password)
 
