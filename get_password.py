@@ -1,15 +1,17 @@
 
 import secrets, random
 import pyperclip
-
+import time
 # get password  function
 
 def get_password(length: int):
 
     length = int(length)
     if length < 12:
+        print("password length too small, adjusting to nearest length")
         length = 12
     elif length > 128:
+        print("password length too big, adjusting to nearest length")
         length = 128
     
     LOWER_CASE = "abcdefghijklmnopqrstuvwxyz"
@@ -36,5 +38,11 @@ def get_password(length: int):
     for char in password:
         shuffled_password += char
     
+    print()
+    
     pyperclip.copy(shuffled_password)
+    print("password copied to clipboard")
+    time.sleep(10)
+    print("removing password from clipboard")
+    pyperclip.copy("")
 
