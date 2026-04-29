@@ -4,7 +4,7 @@
 A command line password generator with clipboard support. 
 
 This simple tool randomly generates a unique strong password.
-Once executed, the program generates a strong password between 12 and 128 characters long and copies the output to the user's clipboard - ready to be used.
+Once executed, the program generates a strong password between 12 and 128 characters long and copies the output to the user's clipboard for a limited time - ready to be used.
 
 ## Installation
 
@@ -44,7 +44,7 @@ python3 main.py 20
 CJ985<#C#=5^aVC<a9<^
 ```
 
-Creates a strong password of 20 characters and copies it to the clipboard.
+Creates a strong password of 20 characters and copies it to the clipboard for 25 seconds. (note: Password does NOT remove from enabled clipboard history)
 If the given length is below 12 or above 128, the length defaults to the closest defined boundary.
 
 ## License
