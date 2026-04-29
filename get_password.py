@@ -2,9 +2,18 @@
 import secrets, random
 import pyperclip
 import time
+import platform
+
 # get password  function
 
 def get_password(length: int):
+    is_windows = False
+    is_ios = False
+
+    if platform.system() == "iOS":
+        is_ios = True
+    else:
+        is_windows = True
 
     length = int(length)
     if length < 12:
@@ -41,6 +50,11 @@ def get_password(length: int):
 
     pyperclip.copy(shuffled_password)
     print("password copied to clipboard")
+    print()
+    if is_ios:
+        print("Use cmd+v to paste")
+    else:
+        print("Use cntrl+v to paste")
     print()
     print("removing password in 25 seconds...")
     time.sleep(25)
