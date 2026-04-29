@@ -33,17 +33,16 @@ def get_password(length: int):
     r = random.SystemRandom()
     r.shuffle(list(password)), r.shuffle([5, 4]), r.shuffle(password)
     
-    shuffled_password = ""
+    shuffled_password = "".join(password)
 
-    for char in password:
-        shuffled_password += char
+
     
     print()
 
     pyperclip.copy(shuffled_password)
     print("password copied to clipboard")
     print()
-    print("removing password")
+    print("removing password in 25 seconds...")
     time.sleep(25)
     print()
     pyperclip.copy("")
