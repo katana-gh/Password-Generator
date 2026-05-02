@@ -56,9 +56,11 @@ def get_password(length: int):
     else:
         print("Use cntrl+v to paste")
     print()
-    print("removing password in 25 seconds...")
+    print("")
     time.sleep(25)
-    print()
+    print(Password will be removed in 25 seconds.)
     pyperclip.copy("")
     print("password removed from clipboard")
 
+if __name__ == "__main__":
+    get_password()

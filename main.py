@@ -12,4 +12,5 @@ def main():
     else:
         get_password(length)
 
-main()
+if __name__ == "__main__":
+    main()
