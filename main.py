@@ -5,6 +5,7 @@ from sys import argv
 def main():
     try:
         length = int(argv[1])
+        
     except ValueError:
         print("argument must be a numeric value")
     except IndexError:

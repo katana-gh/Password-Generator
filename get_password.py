@@ -12,7 +12,6 @@ def get_password(length: int) -> str:
 
     is_ios = True if platform.system() == "iOS" else False
 
-    length = int(length)
     if length < 12:
         print("password length too small, adjusting to nearest length: 12")
         length = 12
@@ -48,11 +47,11 @@ def get_password(length: int) -> str:
     pyperclip.copy(shuffled_password)
     print("password copied to clipboard")
     print()
-    
+
     print("Use cmd+v to paste") if is_ios else print("Use cntrl+v to paste")
     
     print()
-    counter = 25
+    counter = 30
     while counter > 0:
         print(f"Removing password in {counter} seconds...")
         time.sleep(1)
