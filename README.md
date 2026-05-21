@@ -28,15 +28,15 @@ pip install pyperclip
 
 ## Usage
 
-Run the program by specifying the password's length:
+Run the program by specifying the password's <length> <optional time>:
 
 ```bash
-python3 main.py <length>
+python3 main.py <length> <time>
 ```
 
 ### Example
 ```bash
-python3 main.py 20
+python3 main.py 20 15
 ```
 
 **Output:**
@@ -44,8 +44,9 @@ python3 main.py 20
 CJ985<#C#=5^aVC<a9<^
 ```
 
-Creates a strong password of 20 characters and copies it to the clipboard for 30 seconds. (note: Password does NOT remove from enabled clipboard history)
+Creates a strong password of 20 characters and copies it to the clipboard for 15 seconds. (note: Password does NOT remove from enabled clipboard history)
 If the given length is below 12 or above 128, the length defaults to the closest defined boundary.
+If no time argument is specified, the password is removed from clipboard after 30 seconds.
 
 ## License
 
