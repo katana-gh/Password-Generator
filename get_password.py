@@ -2,63 +2,68 @@
 import secrets
 import random
 import pyperclip
-import time
+from time import sleep
 import platform
+from sys import exit
 
 # get password  function
 
-def get_password(length: int) -> str:
-    is_ios = False
+def get_password(length: int, time: int) -> str:
+    try:
+        is_ios = False
 
-    is_ios = True if platform.system() == "iOS" else False
+        is_ios = True if platform.system() == "iOS" else False
 
-    if length < 12:
-        print("password length too small, adjusting to nearest length: 12")
-        length = 12
-    elif length > 128:
-        print("password length too big, adjusting to nearest length: 128")
-        length = 128
+        if length < 12:
+            print("password length too small, adjusting to nearest length: 12")
+            length = 12
+        elif length > 128:
+            print("password length too big, adjusting to nearest length: 128")
+            length = 128
     
-    LOWER_CASE = "abcdefghijklmnopqrstuvwxyz"
-    UPPER_CASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    NUMS = "1234567890"
-    SYMBOLS = "!@#$%^&*()_+-=[]{}|;:,./<>? "
-    character_list = LOWER_CASE + UPPER_CASE + NUMS + SYMBOLS
+        LOWER_CASE = "abcdefghijklmnopqrstuvwxyz"
+        UPPER_CASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        NUMS = "1234567890"
+        SYMBOLS = "!@#$%^&*()_+-=[]{}|;:,./<>? "
+        character_list = LOWER_CASE + UPPER_CASE + NUMS + SYMBOLS
     
-    password = ""
-    password += secrets.choice(LOWER_CASE)
-    password += secrets.choice(UPPER_CASE)
-    password += secrets.choice(NUMS)
-    password += secrets.choice(SYMBOLS)
+        password = ""
+        password += secrets.choice(LOWER_CASE)
+        password += secrets.choice(UPPER_CASE)
+        password += secrets.choice(NUMS)
+        password += secrets.choice(SYMBOLS)
 
-    for i in range(length - 4):
-        password += secrets.choice(character_list)
+        for i in range(length - 4):
+            password += secrets.choice(character_list)
 
-    password = list(password)
-    r = random.SystemRandom()
-    r.shuffle(list(password)), r.shuffle([5, 4]), r.shuffle(password)
+        password = list(password)
+        r = random.SystemRandom()
+        r.shuffle(list(password)), r.shuffle([5, 4]), r.shuffle(password)
     
-    shuffled_password = "".join(password)
+        shuffled_password = "".join(password)
 
 
     
-    print()
+        print()
 
-    pyperclip.copy(shuffled_password)
-    print("password copied to clipboard")
-    print()
+        pyperclip.copy(shuffled_password)
+        print("password copied to clipboard")
+        print()
 
-    print("Use cmd+v to paste") if is_ios else print("Use cntrl+v to paste")
+        print("Use cmd+v to paste") if is_ios else print("Use cntrl+v to paste")
     
-    print()
-    counter = 30
-    while counter > 0:
-        print(f"Removing password in {counter} seconds...")
-        time.sleep(1)
-        counter -= 1
+        print()
+        counter = time
+        while counter > 0:
+            print(f"Removing password in {counter} seconds...")
+            sleep(1)
+            counter -= 1
     
-    pyperclip.copy("")
-    print("password removed from clipboard")
+        pyperclip.copy("")
+        print("password removed from clipboard")
+    except KeyboardInterrupt:
+        pyperclip.copy("")
+        exit()
 
 if __name__ == "__main__":
     get_password()
